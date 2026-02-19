@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block body_class %}decrypt-bg{% endblock %}
+{% block title %}Decrypt Video{% endblock %}
+
+{% block content %}
+<div class="container center-container">
+    <h1>Decrypt Video</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        <label for="videofile">SELECT ENCRYPTED VIDEO FILE (.videnc):</label>
+        <input type="file" id="videofile" name="videofile" accept=".videnc" required>
+
+        <label for="password">ENTER PASSWORD:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">DECRYPT</button>
+    </form>
+
+    {% if result %}
+        <p class="result-message">{{ result }}</p>
+    {% endif %}
+    {% if video_download %}
+        <div class="download-section">
+            <a href="{{ video_download }}" class="download-button" download>Download Decrypted Video</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block body_class %}encrypt-bg{% endblock %}
+{% block title %}Encrypt Text in Image{% endblock %}
+
+{% block content %}
+<div class="container center-container">
+    <h1>Encrypt Text to Image </h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        <label for="imagefile">SELECT PNG COVER IMAGE:</label>
+        <input type="file" id="imagefile" name="imagefile" accept="image/png" required>
+
+        <label for="text">ENTER SECRET MESSAGE:</label>
+        <textarea id="text" name="text" rows="5" required>{{ request.form.text or '' }}</textarea>
+
+        <label for="password">CREATE PASSWORD:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">ENCRYPT</button>
+    </form>
+
+    {% if result %}
+        <p class="result-message">{{ result }}</p>
+    {% endif %}
+
+    {% if download_link %}
+        <div class="download-section">
+            <a href="{{ download_link }}" class="download-button" download>Download Encrypted Image</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

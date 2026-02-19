@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block body_class %}encrypt-bg{% endblock %}
+{% block title %}Encrypt Audio{% endblock %}
+
+{% block content %}
+<div class="container center-container">
+    <h1>Encrypt Audio</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        <label for="audiofile">SELECT WAV FILE:</label>
+        <input type="file" id="audiofile" name="audiofile" accept="audio/wav" required>
+
+        <label for="password">CREATE PASSWORD:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">ENCRYPT</button>
+    </form>
+
+    {% if result %}
+        <p class="result-message">{{ result }}</p>
+    {% endif %}
+    {% if download_link %}
+        <div class="download-section">
+            <a href="{{ download_link }}" class="download-button" download>Download Encrypted Audio</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

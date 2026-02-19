@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block body_class %}encrypt-bg{% endblock %}
+{% block title %}Encrypt Video{% endblock %}
+
+{% block content %}
+<div class="container center-container">
+    <h1>Encrypt Video</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        <label for="videofile">SELECT MP4 VIDEO FILE:</label>
+        <input type="file" id="videofile" name="videofile" accept="video/mp4" required>
+
+        <label for="password">CREATE PASSWORD:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">ENCRYPT</button>
+    </form>
+
+    {% if result %}
+        <p class="result-message">{{ result }}</p>
+    {% endif %}
+    {% if download_link %}
+        <div class="download-section">
+            <a href="{{ download_link }}" class="download-button" download>Download Encrypted Video</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

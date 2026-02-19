@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Admin Portal</h1>
+
+<!-- Registration form -->
+<h2>Register</h2>
+<form method="POST" action="{{ url_for('admin_register') }}">
+    <label for="reg_username">Username:</label>
+    <input type="text" name="username" id="reg_username" required><br>
+    <label for="reg_password">Password:</label>
+    <input type="password" name="password" id="reg_password" required><br>
+    <label>
+        <input type="checkbox" name="is_human" required>
+        I am not a robot
+    </label><br>
+    <button type="submit">Register</button>
+</form>
+
+<br>
+
+<h2>Login</h2>
+<form method="POST" action="{{ url_for('admin_login') }}">
+    <label for="login_username">Username:</label>
+    <input type="text" name="username" id="login_username" required><br>
+    <label for="login_password">Password:</label>
+    <input type="password" name="password" id="login_password" required><br>
+    <label>
+        <input type="checkbox" name="is_human" required>
+        I am not a robot
+    </label><br>
+    <button type="submit">Login</button>
+</form>
+
+{% if error %}
+    <p style="color: red">{{ error }}</p>
+{% endif %}
+
+{% endblock %}

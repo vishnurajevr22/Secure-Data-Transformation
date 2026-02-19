@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block body_class %}dashboard-page{% endblock %}
+{% block title %}Operator Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <h1>OPERATOR DASHBOARD</h1>
+    <p>Welcome! Please select an encryption or decryption tool below.</p>
+
+    <div class="tool-section encryption-section">
+        <h2>Encryption Tools 🔒</h2>
+        <ul class="tool-list">
+            <li><a href="{{ url_for('encrypt_text_image') }}">Encrypt Text to Image</a></li>
+            <li><a href="{{ url_for('encrypt_image_text') }}">Encrypt Image to Text</a></li>
+            <li><a href="{{ url_for('encrypt_audio') }}">Encrypt Audio</a></li>
+            <li><a href="{{ url_for('encrypt_video') }}">Encrypt Video</a></li>
+        </ul>
+    </div>
+
+    <div class="tool-section decryption-section">
+        <h2>Decryption Tools 🔓</h2>
+        <ul class="tool-list">
+            <li><a href="{{ url_for('decrypt_text_image') }}">Decrypt Text to Image</a></li>
+            <li><a href="{{ url_for('decrypt_image_text') }}">Decrypt Image to Text</a></li>
+            <li><a href="{{ url_for('decrypt_audio') }}">Decrypt Audio</a></li>
+            <li><a href="{{ url_for('decrypt_video') }}">Decrypt Video</a></li>
+        </ul>
+    </div>
+
+</div>
+{% endblock %}

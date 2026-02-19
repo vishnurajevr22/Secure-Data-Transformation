@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add Google Font 'Orbitron' for the military/sci-fi feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>{% block title %}{% endblock %} - Secure System</title>
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+    <nav>
+  {% if session.get('username') %}
+    <p>
+      Logged in as {{ session['username'] }}
+      | <a href="{{ url_for('logout') }}">Logout</a>
+      || <a href="{{ url_for('home') }}"> [ Home ] </a> ||
+    </p>
+  {% endif %}
+</nav>
+
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+
+</html>

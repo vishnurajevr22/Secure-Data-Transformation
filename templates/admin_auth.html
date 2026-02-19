@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Authentication Check{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Security Check</h1>
+    <p>Welcome, {{ session.get('username') }}! Please solve the math problem to continue.</p>
+ 
+    <form method="POST" action="{{ url_for('admin_auth_page') }}">
+        
+        <label for="captcha_answer">{{ captcha_question }}</label>
+        <input type="text" id="captcha_answer" name="captcha_answer" required autofocus>
+
+        <button type="submit">Verify</button>
+        
+    </form>
+    
+</body>
+
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+</div>
+{% endblock %}

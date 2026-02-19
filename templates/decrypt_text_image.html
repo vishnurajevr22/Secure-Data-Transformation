@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block body_class %}decrypt-bg{% endblock %}
+{% block title %}Decrypt Text from Image{% endblock %}
+
+{% block content %}
+<div class="container center-container">
+    <h1>Decrypt Text to Image </h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        <label for="imagefile">SELECT STEGO IMAGE FILE:</label>
+        <input type="file" id="imagefile" name="imagefile" accept="image/png" required>
+
+        <label for="password">ENTER PASSWORD:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">DECRYPT</button>
+    </form>
+
+    {% if result %}
+        <p class="result-message">{{ result }}</p>
+    {% endif %}
+</div>
+{% endblock %}

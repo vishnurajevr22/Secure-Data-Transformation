@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block body_class %}decrypt-bg{% endblock %}
+{% block title %}Decrypt Audio{% endblock %}
+
+{% block content %}
+<div class="container center-container">
+    <h1>Decrypt Audio</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        <label for="audiofile">SELECT ENCRYPTED AUDIO FILE (.audenc):</label>
+        <input type="file" id="audiofile" name="audiofile" accept=".audenc" required>
+
+        <label for="password">ENTER PASSWORD:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">DECRYPT</button>
+    </form>
+
+    {% if result %}
+        <p class="result-message">{{ result }}</p>
+    {% endif %}
+    {% if wav_download %}
+        <div class="download-section">
+            <a href="{{ wav_download }}" class="download-button" download>Download Decrypted WAV</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

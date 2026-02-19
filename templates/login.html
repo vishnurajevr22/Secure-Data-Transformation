@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block body_class %}login-page{% endblock %}
+{% block title %}System Access{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Mission Authentication</h1>
+
+    <form method="POST" action="{{ url_for('login') }}">
+        
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+        
+    </form>
+
+    {% if msg %}
+        <p class="error">{{ msg }}</p>
+    {% endif %}
+
+    <div style="text-align: center; margin-top: 20px;">
+        <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+    </div>
+
+</div>
+{% endblock %}

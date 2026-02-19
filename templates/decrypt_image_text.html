@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block body_class %}decrypt-bg{% endblock %}
+{% block title %}Decrypt Text to Image{% endblock %}
+{% block content %}
+<div class="container center-container">
+    <h1>Decrypt Image to Text </h1>
+    <form method="POST" enctype="multipart/form-data" action="{{ url_for('decrypt_image_text') }}">
+        <label for="encrypted_text">Paste Encrypted Text</label>
+        <textarea id="encrypted_text" name="encrypted_text" rows="7" style="width:100%"></textarea>
+        <div style="text-align: center; margin: 15px 0;">OR</div>
+        <label for="textfile">Upload Encrypted Text File</label>
+        <input type="file" id="textfile" name="textfile" accept=".txt">
+        <label for="password">Enter Password</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Decrypt</button>
+    </form>
+    {% if result %}
+        <p class="result-message">{{ result }}</p>
+    {% endif %}
+    {% if image_url %}
+        <div class="output-section">
+            <h3>Your Image:</h3>
+            <img src="{{ image_url }}" alt="Decrypted Image" style="max-width:100%;border-radius:8px;">
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Create a New Account</h1>
+
+    <form method="POST" action="{{ url_for('register') }}">
+        
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="username">Create Username</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Create Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Register</button>
+        
+    </form>
+
+    {% if msg %}
+        <p class="error">{{ msg }}</p>
+    {% endif %}
+
+    <div style="text-align: center; margin-top: 20px;">
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+    </div>
+
+</div>
+{% endblock %}
